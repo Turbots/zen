@@ -20,8 +20,8 @@ public class RootController {
         ModelAndView mav = new ModelAndView("index");
 
         mav.addObject("nodeName", System.getenv("NODE_NAME"));
-        mav.addObject("podIp", System.getenv("POD_NAME"));
-        mav.addObject("podName", System.getenv("POD_IP"));
+        mav.addObject("podIp", System.getenv("POD_IP"));
+        mav.addObject("podName", System.getenv("POD_NAME"));
 
         mav.addObject("saying", messageService.getRandomSaying());
 
