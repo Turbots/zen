@@ -3,6 +3,7 @@ target/
 .mvn
 !**/src/main/**/target/
 !**/src/test/**/target/
+.DS_STORE
 
 ### STS ###
 .apt_generated
@@ -31,3 +32,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/kubernetes/tools/gcp.key.json

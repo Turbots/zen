@@ -1,0 +1,14 @@
+configuration:
+  provider: gcp
+  backupStorageLocation:
+    bucket: dhubau-velero-bucket
+    config:
+      bucket: dhubau-velero-bucket
+  volumeSnapshotLocation:
+    name: dhubau-velero-volumes
+initContainers:
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-gcp:v1.1.0
+    volumeMounts:
+    - mountPath: /target
+      name: plugins

@@ -1,0 +1,8 @@
+sources:
+  - service
+  - ingress
+provider: google
+google:
+  serviceAccountSecret: "gcp-key"
+  serviceAccountSecretKey: "gcp.key.json"
+  

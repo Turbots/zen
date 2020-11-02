@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: zen
+spec:
+  destination:
+    server: 'https://apps.buellton.cf-app.com:8443'
+    namespace: develop
+  source:
+    repoURL: 'https://gitlab.hubau.cloud/root/gitops.git'
+    targetRevision: master
+    path: 'develop/zen'
+  project: development
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+      prune: true
+      selfHeal: true

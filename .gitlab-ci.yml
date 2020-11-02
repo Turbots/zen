@@ -1,0 +1,68 @@
+image: maven:latest
+
+variables:
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+stages:
+  - test
+  - package
+  - build-image
+  - gitops
+
+test:
+  stage: test
+  script:
+    - mvn $MAVEN_CLI_OPTS test
+
+build-jar:
+  stage: package
+  script:
+    - echo "Setting new version to $CI_COMMIT_SHORT_SHA"
+    - mvn versions:set -DnewVersion=$CI_COMMIT_SHORT_SHA
+    - mvn $MAVEN_CLI_OPTS deploy -DskipTests
+
+build-image:
+  stage: build-image
+  image:
+    name: dhubau/kpack8s:latest
+    entrypoint: [""]
+  before_script:
+    - echo ${KUBE_CONFIG} | base64 -d > kube_config
+    - export KUBECONFIG=kube_config
+    - kubectl version
+    - kp version
+  script:
+    - ARTIFACT_URL=$CI_API_V4_URL'/projects/'$CI_PROJECT_ID'/packages/maven/com/tanzu/zen/'$CI_COMMIT_SHORT_SHA'/zen-'$CI_COMMIT_SHORT_SHA'.jar?private_token='$ACCESS_TOKEN
+    - echo "Artifact URL is $ARTIFACT_URL"
+    - kp image patch zen -n default --blob "$ARTIFACT_URL" --wait
+    - IMAGE_TAG=$(kp image status zen -n default | grep LatestImage | awk '{print $2}')
+    - echo "Image Tag is $IMAGE_TAG"
+    - echo $IMAGE_TAG > image_tag
+  artifacts:
+    when: always
+    paths:
+      - image_tag
+
+update-gitops:
+  stage: gitops
+  image:
+    name: alpine/git
+    entrypoint: [""]
+  script:
+    - IMAGE_TAG=$(cat image_tag)
+    - echo "Updating Zen deployment with tag $IMAGE_TAG"
+    - cd /tmp
+    - git clone https://${GIT_USER_NAME}:${GIT_USER_PASSWORD}@gitlab.hubau.cloud/root/gitops.git
+    - cd gitops/develop/zen
+    - cat deployment.yaml.template | sed "s~IMAGE_TAG~${IMAGE_TAG}~" > deployment.yaml
+    - git add .
+    - git config user.email "build-bot@hubau.cloud"
+    - git config user.name "Build Bot"
+    - git commit -m "[Gitlab CI Bot] - updated image tag for Zen to $IMAGE_TAG"
+    - git push origin master

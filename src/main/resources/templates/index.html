@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Zen - One with Everything</title>
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <meta name="theme-color" content="#563d7c">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/product.css" th:href="@{/css/product.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 font-weight-normal">ZEN</h1>
+        <p class="lead font-weight-normal" th:text="${saying}">This is a catchy one-liner</p>
+        <a class="btn btn-outline-secondary" href="https://jfall.nl/" target="_blank">JFall 2020</a>
+    </div>
+    <div class="product-device d-none d-md-block">
+        <img src="../static/img/zen.png" th:src="@{/img/zen.png}" alt="Zen" width="100%"/>
+    </div>
+</div>
+
+<footer class="container py-5">
+    <div class="row">
+        <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">© 2020 Dieter Hubau</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Nodename</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#" th:text="${nodeName}">vm-example</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Podname</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#" th:text="${podName}">zen-123456-abcdef</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Pod IP</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#" th:text="${podIp}">127.0.0.1</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Source</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="https://github.com/Turbots" target="_blank">Github</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body></html>

@@ -1,0 +1,24 @@
+global:
+  edition: ce
+  hosts:
+    domain: gitlab.hubau.cloud
+  ingress:
+    annotations:
+      kubernetes.io/tls-acme: true
+      kubernetes.io/ingress.class: contour
+      cert-manager.io/cluster-issuer: letsencrypt
+      ingress.kubernetes.io/force-ssl-redirect: true
+    configureCertmanager: false
+gitlab:
+  webservice:
+    ingress:
+      tls:
+        secretName: gitlab-web-tls
+registry:
+  ingress:
+    tls:
+      secretName: gitlab-registry-tls
+minio:
+  ingress:
+    tls:
+      secretName: gitlab-minio-tls

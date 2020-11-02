@@ -1,0 +1,23 @@
+service:
+  type: Ingress
+  tls:
+    enabled: true
+ingress:
+  enabled: true
+  hosts:
+    core: harbor.hubau.cloud
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    ingress.kubernetes.io/ssl-redirect: 'true'
+    ingress.kubernetes.io/proxy-body-size: '0'
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: "contour"
+externalURL: https://harbor.hubau.cloud
+notary:
+  enabled: false
+persistence:
+  enabled: true
+  persistentVolumeClaim:
+    registry:
+      size: 100Gi
+harborAdminPassword: 'VMware1!'

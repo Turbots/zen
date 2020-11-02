@@ -1,0 +1,15 @@
+server:
+  extraArgs:
+  - --insecure
+  ingress:
+    annotations:
+      kubernetes.io/tls-acme: "true"
+      kubernetes.io/ingress.class: "contour"
+      cert-manager.io/cluster-issuer: "letsencrypt"
+    enabled: true
+    hosts:
+    - "argocd.hubau.cloud"
+    tls:
+    - secretName: "argocd-tls-secret"
+      hosts:
+      - "argocd.hubau.cloud"

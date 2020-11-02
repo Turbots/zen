@@ -60,4 +60,20 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>gitlab-maven</id>
+			<url>https://gitlab.hubau.cloud/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>gitlab-maven</id>
+			<url>https://gitlab.hubau.cloud/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
+		</repository>
+		<snapshotRepository>
+			<id>gitlab-maven</id>
+			<url>https://gitlab.hubau.cloud/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>

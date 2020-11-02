@@ -1,0 +1,14 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: argocd-passthrough
+  namespace: argocd
+spec:
+  tcpproxy:
+    services:
+    - name: argocd-server
+      port: 443
+  virtualhost:
+    fqdn: argocd.hubau.cloud
+    tls:
+      passthrough: true
