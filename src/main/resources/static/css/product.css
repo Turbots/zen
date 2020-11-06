@@ -2,6 +2,16 @@
   max-width: 960px;
 }
 
+/**
+ * Custom Background Color
+ */
+.bg-light {
+  background-color: #9fcdff!important;
+  color: #1b1e21;
+  #background-color: #8fd19e!important;
+  #color: white;
+}
+
 /*
  * Custom translucent site header
  */

@@ -14,5 +14,3 @@ Run the `kubernetes/01-setup-tools-cluster.sh` script to install the following:
 - ArgoCD as the GitOps tool of choice
 
 ## Setup the Application cluster
-
-In o
