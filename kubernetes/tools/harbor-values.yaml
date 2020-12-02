@@ -7,7 +7,7 @@ ingress:
   hosts:
     core: harbor.hubau.cloud
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "letsencrypt"
     ingress.kubernetes.io/ssl-redirect: 'true'
     ingress.kubernetes.io/proxy-body-size: '0'
     kubernetes.io/tls-acme: "true"
