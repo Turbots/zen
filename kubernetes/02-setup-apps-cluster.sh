@@ -14,3 +14,9 @@ kubectl create namespace cert-manager
 kubectl create secret generic gcp-key -n cert-manager --from-file=tools/gcp.key.json
 helm upgrade -i cert-manager jetstack/cert-manager -n cert-manager --version v1.0.3 --set installCRDs=true
 kubectl apply -f tools/cert-issuers.yaml -n cert-manager
+
+argocd proj add-source default https://gitlab.hubau.cloud/root/zen
+argocd proj add-source default https://gitlab.hubau.cloud/root/gitops
+argocd proj add-source default https://charts.bitnami.com/bitnami
+argocd proj add-destination default apps.calimesa.cf-app.com default
+argocd proj add-destination default apps.calimesa.cf-app.com default
