@@ -5,13 +5,13 @@ metadata:
   name: zen
 spec:
   destination:
-    server: 'https://apps.buellton.cf-app.com:8443'
-    namespace: develop
+    server: 'https://apps.calimesa.cf-app.com:8443'
+    namespace: default
   source:
     repoURL: 'https://gitlab.hubau.cloud/root/gitops.git'
     targetRevision: master
     path: 'develop/zen'
-  project: development
+  project: default
   syncPolicy:
     automated:
       automated:

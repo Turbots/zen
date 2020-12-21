@@ -1,7 +1,7 @@
 global:
   edition: ce
   hosts:
-    domain: gitlab.hubau.cloud
+    domain: hubau.cloud
   ingress:
     annotations:
       kubernetes.io/tls-acme: true

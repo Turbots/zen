@@ -14,3 +14,19 @@ kubectl create namespace cert-manager
 kubectl create secret generic gcp-key -n cert-manager --from-file=tools/gcp.key.json
 helm upgrade -i cert-manager jetstack/cert-manager -n cert-manager --version v1.0.3 --set installCRDs=true
 kubectl apply -f tools/cert-issuers.yaml -n cert-manager
+
+# argocd proj create getswish-test
+# argocd proj create getswish-prod
+argocd proj add-source default https://gitlab.hubau.cloud/root/zen
+# argocd proj add-source getswish-test https://github.com/Turbots/zen
+# argocd proj add-source getswish-prod https://github.com/Turbots/zen
+argocd proj add-source default https://gitlab.hubau.cloud/root/gitops
+# argocd proj add-source getswish-test https://github.com/Turbots/gitops
+# argocd proj add-source getswish-prod https://github.com/Turbots/gitops
+argocd proj add-source default https://charts.bitnami.com/bitnami
+# argocd proj add-source getswish-test https://charts.bitnami.com/bitnami
+# argocd proj add-source getswish-prod https://charts.bitnami.com/bitnami
+argocd proj add-destination default apps.calimesa.cf-app.com default
+# argocd proj add-destination getswish-test https://getswish-test.demo.teco.online default
+argocd proj add-destination default apps.calimesa.cf-app.com default
+# argocd proj add-destination getswish-prod https://getswish-prod.demo.teco.online default
