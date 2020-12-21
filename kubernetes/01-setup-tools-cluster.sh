@@ -36,7 +36,7 @@ helm upgrade -i velero vmware-tanzu/velero -n velero --values tools/velero-value
 
 # Install Tanzu Build Service
 # Documentation: https://docs.pivotal.io/build-service/1-0/installing.html
-# docker login harbor.hubau.cloud
+# docker login harbor.hubau.clouda
 # docker login registry.pivotal.io
 # kbld relocate -f images.lock --lock-output images-relocated.lock --repository harbor.hubau.cloud/library/build-service
 # kubectl create namespace kpack
@@ -48,3 +48,4 @@ helm upgrade -i velero vmware-tanzu/velero -n velero --values tools/velero-value
 kp secret create harbor-credentials -n default --registry harbor.hubau.cloud --registry-user admin
 
 kp image create zen -n default --tag harbor.hubau.cloud/library/zen:latest --blob https://gitlab.hubau.cloud/root/zen
+# kp image create zen -n default --tag harbor.svc.tieto1-1.4.fi.teco.online/swish/zen:latest --git https://github.com/Turbots/zen --git-revision main

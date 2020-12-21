@@ -103,10 +103,6 @@
             <name>Spring milestone</name>
             <url>https://repo.spring.io/milestone</url>
         </repository>
-        <repository>
-            <id>gitlab-maven</id>
-            <url>https://gitlab.hubau.cloud/api/v4/projects/2/packages/maven</url>
-        </repository>
     </repositories>
 
     <dependencyManagement>
@@ -120,15 +116,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>gitlab-maven</id>
-            <url>https://gitlab.hubau.cloud/api/v4/projects/2/packages/maven</url>
-        </repository>
-        <snapshotRepository>
-            <id>gitlab-maven</id>
-            <url>https://gitlab.hubau.cloud/api/v4/projects/2/packages/maven</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
