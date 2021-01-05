@@ -1,0 +1,10 @@
+---
+applications:
+  - name: zen
+    path: target/zen-0.0.1-SNAPSHOT.jar
+    services:
+      - small-mysql
+      - credhub
+    buildpack: java_buildpack_offline
+    health-check-type: http
+    health-check-http-endpoint: /actuator/health/
