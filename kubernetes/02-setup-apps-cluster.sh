@@ -17,10 +17,10 @@ kubectl apply -f tools/cert-issuers.yaml -n cert-manager
 
 # argocd proj create getswish-test
 # argocd proj create getswish-prod
-argocd proj add-source default https://gitlab.hubau.cloud/root/zen
+argocd proj add-source default https://gitlab.tanzu.be/root/zen
 # argocd proj add-source getswish-test https://github.com/Turbots/zen
 # argocd proj add-source getswish-prod https://github.com/Turbots/zen
-argocd proj add-source default https://gitlab.hubau.cloud/root/gitops
+argocd proj add-source default https://gitlab.tanzu.be/root/gitops
 # argocd proj add-source getswish-test https://github.com/Turbots/gitops
 # argocd proj add-source getswish-prod https://github.com/Turbots/gitops
 argocd proj add-source default https://charts.bitnami.com/bitnami
