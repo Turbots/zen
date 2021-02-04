@@ -9,6 +9,6 @@ spec:
     - name: argocd-server
       port: 443
   virtualhost:
-    fqdn: argocd.hubau.cloud
+    fqdn: argocd.tanzu.be
     tls:
       passthrough: true

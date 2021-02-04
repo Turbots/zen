@@ -16,3 +16,15 @@ pivnet download-product-files --product-slug='build-service' --release-version='
 pivnet download-product-files --product-slug='tbs-dependencies' --release-version='100.0.49' --product-file-id=842517
 
 tar xvf build-service-1.0.3.tar -C /tmp
+
+docker login harbor.tanzu.be
+docker login registry.pivotal.io
+
+kbld relocate -f images.lock --lock-output images-relocated.lock --repository harbor.hubau.cloud/library/build-service
+
+kubectl create namespace kpack
+
+ytt -f values.yaml -f manifests/ | kbld -f images-relocated.lock -f- | kapp deploy -a tanzu-build-service -f- -y
+
+# Download images.lock, values.yaml and descriptor file from https://network.pivotal.io as detailed in the documentation.
+kp import -f descriptor-100.0.34.yaml
