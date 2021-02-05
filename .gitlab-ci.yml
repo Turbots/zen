@@ -58,11 +58,11 @@ update-gitops:
     - IMAGE_TAG=$(cat image_tag)
     - echo "Updating Zen deployment with tag $IMAGE_TAG"
     - cd /tmp
-    - git clone https://${GIT_USER_NAME}:${GIT_USER_PASSWORD}@gitlab.hubau.cloud/root/gitops.git
+    - git clone https://${GIT_USER_NAME}:${GIT_USER_PASSWORD}@gitlab.tanzu.be/root/gitops.git
     - cd gitops/develop/zen
     - cat deployment.yaml.template | sed "s~IMAGE_TAG~${IMAGE_TAG}~" > deployment.yaml
     - git add .
-    - git config user.email "build-bot@hubau.cloud"
+    - git config user.email "build-bot@tanzu.be"
     - git config user.name "Build Bot"
     - git commit -m "[Gitlab CI Bot] - updated image tag for Zen to $IMAGE_TAG"
     - git push origin master
