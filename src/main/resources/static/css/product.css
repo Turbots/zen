@@ -6,9 +6,9 @@
  * Custom Background Color
  */
 .bg-light {
-  background-color: #9fcdff!important;
+  #background-color: #9fcdff!important;
   color: #1b1e21;
-  #background-color: #5c2d91!important;
+  background-color: #5c2d91!important;
   #color: white;
 }
 
