@@ -1,7 +1,7 @@
 image: maven:latest
 
 variables:
-  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+  MAVEN_CLI_OPTS: "--batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
 cache:
@@ -58,7 +58,7 @@ update-gitops:
     - IMAGE_TAG=$(cat image_tag)
     - echo "Updating Zen deployment with tag $IMAGE_TAG"
     - cd /tmp
-    - git clone https://${GIT_USER_NAME}:${GIT_USER_PASSWORD}@gitlab.hubau.cloud/root/gitops.git
+    - git clone https://${GIT_USER_NAME}:${GIT_USER_PASSWORD}@gitlab.tanzu.be/root/gitops.git
     - cd gitops/develop/zen
     - cat deployment.yaml.template | sed "s~IMAGE_TAG~${IMAGE_TAG}~" > deployment.yaml
     - git add .

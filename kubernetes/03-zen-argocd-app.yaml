@@ -5,8 +5,8 @@ metadata:
   name: zen
 spec:
   destination:
-    server: 'https://apps.calimesa.cf-app.com:8443'
-    namespace: default
+    server: 'dhubau-aks-production'
+    namespace: dev
   source:
     repoURL: 'https://gitlab.hubau.cloud/root/gitops.git'
     targetRevision: master

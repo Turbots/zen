@@ -15,7 +15,7 @@
     <description>Zen Demo - One With Everything</description>
 
     <properties>
-        <java.version>15</java.version>
+        <java.version>11</java.version>
         <wavefront.version>2.1.0-SNAPSHOT</wavefront.version>
     </properties>
 

@@ -10,10 +10,10 @@ wget https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.30.0/ytt-li
 wget https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.27.0/kbld-linux-amd64
 wget https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.34.0/kapp-linux-amd64
 
-pivnet login --api-token <TOKEN>
+pivnet login --api-token $TOKEN
 
 pivnet download-product-files --product-slug='build-service' --release-version='1.0.3' --product-file-id=817468
-pivnet download-product-files --product-slug='tbs-dependencies' --release-version='100.0.49' --product-file-id=842517
+pivnet download-product-files --product-slug='tbs-dependencies' --release-version='100.0.62' --product-file-id=842517
 
 tar xvf build-service-1.0.3.tar -C /tmp
 
