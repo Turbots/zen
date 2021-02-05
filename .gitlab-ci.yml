@@ -65,4 +65,4 @@ update-gitops:
     - git config user.email "build-bot@tanzu.be"
     - git config user.name "Build Bot"
     - git commit -m "[Gitlab CI Bot] - updated image tag for Zen to $IMAGE_TAG"
-    - git push origin master
+    - git push origin main
