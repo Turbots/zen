@@ -6,10 +6,10 @@
  * Custom Background Color
  */
 .bg-light {
-  #background-color: #9fcdff!important;
+  background-color: #9fcdff!important;
+  #background-color: white!important;
   color: white;
-  background-color: #5c2d91!important;
-  #color: white;
+  #color: #5c2d91;
 }
 
 /*
@@ -31,8 +31,8 @@
 }
 
 .btn-outline-secondary {
-  color: #DE2A56;
-  border-color: #DE2A56;
+  color: white;
+  border-color: white;
 }
 
 .product-device {
