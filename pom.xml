@@ -79,7 +79,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <builder>paketobuildpacks/builder:tiny</builder>
                         <env>
                             <BP_BOOT_NATIVE_IMAGE>0</BP_BOOT_NATIVE_IMAGE>
                             <BP_BOOT_NATIVE_IMAGE_BUILD_ARGUMENTS>
