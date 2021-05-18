@@ -5,7 +5,7 @@ global:
   ingress:
     annotations:
       kubernetes.io/tls-acme: true
-      kubernetes.io/ingress.class: nginx
+      kubernetes.io/ingress.class: contour
       cert-manager.io/cluster-issuer: letsencrypt
       ingress.kubernetes.io/force-ssl-redirect: true
     configureCertmanager: false
@@ -22,3 +22,5 @@ minio:
   ingress:
     tls:
       secretName: gitlab-minio-tls
+nginx-ingress:
+  enabled: false
