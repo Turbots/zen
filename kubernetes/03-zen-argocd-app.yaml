@@ -5,11 +5,11 @@ metadata:
   name: zen
 spec:
   destination:
-    server: 'dhubau-aks-production'
+    server: 'https://dhubau-aks-production-dns-2ca168fa.hcp.westeurope.azmk8s.io:443'
     namespace: dev
   source:
-    repoURL: 'https://gitlab.hubau.cloud/root/gitops.git'
-    targetRevision: master
+    repoURL: 'https://gitlab.tanzu.be/root/gitops.git'
+    targetRevision: main
     path: 'develop/zen'
   project: default
   syncPolicy:
