@@ -40,7 +40,7 @@ build-image:
   script:
     - ARTIFACT_URL=$CI_API_V4_URL'/projects/'$CI_PROJECT_ID'/packages/maven/com/tanzu/zen/'$CI_COMMIT_SHORT_SHA'/zen-'$CI_COMMIT_SHORT_SHA'.jar?private_token='$ACCESS_TOKEN
     - echo "Artifact URL is $ARTIFACT_URL"
-    - kp image save zen -n default --blob "$ARTIFACT_URL" --wait
+    - kp image save zen -n default --tag harbor.tanzu.be/library/zen --blob "$ARTIFACT_URL" --wait
     - sleep 5
     - IMAGE_TAG=$(kp image status zen -n default | grep LatestImage | awk '{print $2}')
     - echo "Image Tag is $IMAGE_TAG"
