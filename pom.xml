@@ -114,10 +114,12 @@
             <name>Spring milestone</name>
             <url>https://repo.spring.io/milestone</url>
         </repository>
+<!--
         <repository>
             <id>gitlab-maven</id>
             <url>https://gitlab.tanzu.be/api/v4/projects/2/packages/maven</url>
         </repository>
+-->
     </repositories>
 
     <dependencyManagement>
@@ -132,7 +134,8 @@
         </dependencies>
     </dependencyManagement>
 
-    <distributionManagement>
+<!--    
+<distributionManagement>
         <repository>
             <id>gitlab-maven</id>
             <url>https://gitlab.tanzu.be/api/v4/projects/2/packages/maven</url>
@@ -142,4 +145,5 @@
             <url>https://gitlab.tanzu.be/api/v4/projects/2/packages/maven</url>
         </snapshotRepository>
     </distributionManagement>
+-->
 </project>
