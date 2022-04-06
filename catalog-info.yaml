@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: zen
+  description: Zen Demo
+  tags:
+    - java
+    - spring
+    - tanzu
+    - zen
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=zen-demo'
+spec:
+  type: service
+  lifecycle: dev
+  owner: default-team
