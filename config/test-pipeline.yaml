@@ -21,9 +21,9 @@ spec:
           - name: source-revision
         steps:
           - name: test
-            image: maven:3.8.5-openjdk-11-slim
+            image: gradle
             script: |-
               cd `mktemp -d`
 
               wget -qO- $(params.source-url) | tar xvz -m
-              mvn test
+              /mvnw test
