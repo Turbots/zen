@@ -1,6 +1,5 @@
 HELP.md
 target/
-.mvn
 !**/src/main/**/target/
 !**/src/test/**/target/
 .DS_STORE
