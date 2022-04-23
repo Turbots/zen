@@ -21,7 +21,7 @@ spec:
           - name: source-revision
         steps:
           - name: test
-            image: gradle
+            image: maven:3.8.5-openjdk-11-slim
             script: |-
               cd `mktemp -d`
 
