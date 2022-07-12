@@ -1,30 +1,35 @@
----
 apiVersion: scanning.apps.tanzu.vmware.com/v1beta1
 kind: ScanPolicy
 metadata:
   name: scan-policy
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=the-system'
 spec:
   regoFile: |
-    package policies
-
-    default isCompliant = false
+    package main
 
     # Accepted Values: "Critical", "High", "Medium", "Low", "Negligible", "UnknownSeverity"
-    violatingSeverities := ["Critical","High","UnknownSeverity"]
-    ignoreCVEs := []
+    notAllowedSeverities := ["Low"]
+    ignoreCves := []
 
     contains(array, elem) = true {
       array[_] = elem
     } else = false { true }
 
     isSafe(match) {
-      fails := contains(violatingSeverities, match.Ratings.Rating[_].Severity)
+      fails := contains(notAllowedSeverities, match.ratings.rating[_])
       not fails
     }
 
     isSafe(match) {
-      ignore := contains(ignoreCVEs, match.Id)
+      ignore := contains(ignoreCves, match.Id)
       ignore
     }
 
-    isCompliant = isSafe(input.currentVulnerability)
+    deny[msg] {
+      comp := input.bom.components.component[_]
+      vuln := comp.vulnerabilities.vulnerability[_]
+      ratings := vuln.ratings.rating[_]
+      not isSafe(vuln)
+      msg = sprintf("CVE %s %s %s", [comp.name, vuln.id, ratings])
+    }
