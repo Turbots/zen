@@ -1,16 +1,15 @@
+---
 apiVersion: scanning.apps.tanzu.vmware.com/v1beta1
 kind: ScanPolicy
 metadata:
   name: scan-policy
-  annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=the-system'
 spec:
   regoFile: |
     package main
 
     # Accepted Values: "Critical", "High", "Medium", "Low", "Negligible", "UnknownSeverity"
-    notAllowedSeverities := ["Low"]
-    ignoreCves := []
+    notAllowedSeverities := ["Critical"]
+    ignoreCves := ["CVE-2016-1000027"]
 
     contains(array, elem) = true {
       array[_] = elem
