@@ -8,6 +8,11 @@ metadata:
     apps.tanzu.vmware.com/has-tests: true
     apps.tanzu.vmware.com/pipeline: test
 spec:
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "2"
+      autoscaling.knative.dev/maxScale: "10"
   source:
     git:
       url: https://github.com/Turbots/zen.git
