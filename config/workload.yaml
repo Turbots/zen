@@ -5,16 +5,29 @@ metadata:
   labels:
     app.kubernetes.io/part-of: zen-demo
     apps.tanzu.vmware.com/workload-type: web
-    apps.tanzu.vmware.com/has-tests: true
+    apps.tanzu.vmware.com/has-tests: 'true'
     apps.tanzu.vmware.com/pipeline: test
 spec:
-  params:
-  - name: annotations
-    value:
-      autoscaling.knative.dev/minScale: "2"
-      autoscaling.knative.dev/maxScale: "10"
   source:
     git:
       url: https://github.com/Turbots/zen.git
       ref:
         branch: main
+  params:
+  - name: annotations
+    value:
+      autoscaling.knative.dev/minScale: "2"
+      autoscaling.knative.dev/maxScale: "10"
+  env:
+  - name: NODE_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: spec.nodeName
+  - name: POD_NAME
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.name
+  - name: POD_IP
+    valueFrom:
+      fieldRef:
+        fieldPath: status.podIP
