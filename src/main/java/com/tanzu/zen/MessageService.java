@@ -33,7 +33,7 @@ public class MessageService {
         return this.sayingsRepository.findAll();
     }
 
-    @Transactional
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void save(String saying) {
         this.sayingsRepository.save(new Saying(null, saying));
     }

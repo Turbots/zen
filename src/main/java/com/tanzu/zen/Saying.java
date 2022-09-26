@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Saying {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
 
