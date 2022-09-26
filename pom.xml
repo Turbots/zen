@@ -15,7 +15,7 @@
     <description>Zen Demo - One With Everything</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <repackage.classifier/>
         <spring-native.version>0.12.0</spring-native.version>
         <wavefront.version>2.2.2</wavefront.version>
