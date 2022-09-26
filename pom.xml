@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.1</version>
+        <version>3.0.0-M3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.tanzu</groupId>
@@ -126,6 +126,10 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -135,6 +139,10 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestone</id>
+            <url>https://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
 
