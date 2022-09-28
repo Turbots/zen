@@ -13,6 +13,16 @@ spec:
       url: https://github.com/Turbots/zen.git
       ref:
         branch: main
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: '17'
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: zen-postgres-claim
   params:
   - name: annotations
     value:
@@ -23,8 +33,6 @@ spec:
       # Limit scaling to 10 pods.
       autoscaling.knative.dev/max-scale: "10"
   env:
-  - name: BP_JVM_VERSION
-    value: '17'
   - name: NODE_NAME
     valueFrom:
       fieldRef:
