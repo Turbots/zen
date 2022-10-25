@@ -44,6 +44,8 @@ public class RootController implements CommandLineRunner {
                 "Showing a strong success and visible benefits is key to getting others to agree to try your way of doing things.",
                 "Any code commit that passes the entire CI/CD pipeline should be considered a candidate for production.",
                 "Bad KPIs always lead to bad behaviour.",
+                "Innovate without control, eventually we all fall.",
+                "Control without innovation, eventually we’ll lose our differentiation.",
                 "Practice the philosophy of continuous improvement. Get a little bit better every single day.",
                 "People should understand shared goals. The sort of closed, need-to-know thinking gets in the way of product and technical delivery. Everyone should know how systems work if they are interested."
         );
