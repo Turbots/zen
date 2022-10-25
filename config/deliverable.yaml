@@ -22,4 +22,4 @@ spec:
       url: https://github.com/Turbots/gitops.git
       ref:
         branch: main
-    subPath: config/team-tanzu/zen
+    subPath: config/default/zen
