@@ -10,7 +10,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/Turbots/zen.git
+      url: https://gitlab.com/dhubau2/zen.git
       ref:
         branch: main
   build:
