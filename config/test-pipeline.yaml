@@ -21,7 +21,7 @@ spec:
           - name: source-revision
         steps:
           - name: test
-            image: vmwaretap.azurecr.io/apps/gradle
+            image: dhubau.azurecr.io/gradle
             script: |-
               cd `mktemp -d`
 
