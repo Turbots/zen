@@ -21,7 +21,7 @@ spec:
           - name: source-revision
         steps:
           - name: test
-            image: dhubau.azurecr.io/gradle
+            image: harbor.vsphere.hubau.cloud/library/gradle
             script: |-
               cd `mktemp -d`
 
