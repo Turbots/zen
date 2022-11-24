@@ -17,6 +17,12 @@ spec:
     env:
       - name: BP_JVM_VERSION
         value: '17'
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: zen-postgres-claim
   params:
   - name: annotations
     value:

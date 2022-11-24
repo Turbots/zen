@@ -1,0 +1,88 @@
+apiVersion: sql.tanzu.vmware.com/v1
+kind: Postgres
+metadata:
+  labels:
+    app: postgres
+    postgres-instance: zen-db
+  name: zen-db
+  namespace: team-tanzu
+spec:
+  cpu: 800m
+  dataPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - data
+                - monitor
+              - key: postgres-instance
+                operator: In
+                values:
+                - account-db
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+  deploymentOptions:
+    continuousRestoreTarget: false
+  highAvailability: {}
+  imagePullSecret:
+    name: registry-credentials
+  memory: 800Mi
+  monitorPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: type
+                operator: In
+                values:
+                - data
+                - monitor
+              - key: postgres-instance
+                operator: In
+                values:
+                - account-db
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+  monitorStorageSize: 1G
+  persistentVolumeClaimPolicy: delete
+  pgConfig:
+    appUser: pgappuser
+    dbname: account-db
+    readOnlyUser: pgrouser
+    readWriteUser: pgrwuser
+    username: pgadmin
+  postgresVersion:
+    name: postgres-14
+  resources:
+    data:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+    metrics:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    monitor:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+  seccompProfile:
+    type: RuntimeDefault
+  serviceType: ClusterIP
+  storageSize: 1Gi
