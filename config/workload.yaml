@@ -17,12 +17,6 @@ spec:
     env:
       - name: BP_JVM_VERSION
         value: '17'
-  serviceClaims:
-    - name: db
-      ref:
-        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ResourceClaim
-        name: zen-postgres-claim
   params:
   - name: annotations
     value:
@@ -32,6 +26,3 @@ spec:
       autoscaling.knative.dev/min-scale: "2"
       # Limit scaling to 10 pods.
       autoscaling.knative.dev/max-scale: "10"
-  env:
-  - name: SPRING_JPA_DATABASE_PLATFORM
-    value: 'org.hibernate.dialect.PostgreSQLDialect'
