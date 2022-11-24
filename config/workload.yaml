@@ -35,15 +35,3 @@ spec:
   env:
   - name: SPRING_JPA_DATABASE_PLATFORM
     value: 'org.hibernate.dialect.PostgreSQLDialect'
-  - name: NODE_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: spec.nodeName
-  - name: POD_NAME
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.name
-  - name: POD_IP
-    valueFrom:
-      fieldRef:
-        fieldPath: status.podIP
